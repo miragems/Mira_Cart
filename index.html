@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Mira Gems | Lab-Grown Diamonds</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ---------------------------
+       OLIVE GARDEN FEAST PALETTE
+       --------------------------- */
+        :root {
+            --olive-hex: #575d33;
+            /* primary */
+            --dark-hex: #303623;
+            /* accent */
+            --cream-hex: #faf4d8;
+            /* light */
+            --olive-light-hex: #a7af79;
+            --olive-r: 107;
+            --olive-g: 113;
+            --olive-b: 57;
+            --dark-r: 44;
+            --dark-g: 53;
+            --dark-b: 28;
+            --cream-r: 255;
+            --cream-g: 251;
+            --cream-b: 234;
+        }
+
+        /* ===== base ===== */
+        * {
+            box-sizing: border-box
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            color: var(--cream-hex);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        /* ===== animated luxury background ===== */
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            background: linear-gradient(135deg,
+                    var(--dark-hex),
+                    var(--olive-hex),
+                    var(--olive-light-hex));
+            background-size: 400% 400%;
+            animation: gradientFlow 18s ease infinite;
+        }
+
+        @keyframes gradientFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .page {
+            width: 100%;
+            max-width: 1180px;
+            padding: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding-top: 10px;
+            padding-bottom: 6px;
+        }
+
+        .logo-wrap {
+            display: inline-block;
+            padding: 14px;
+            border-radius: 999px;
+            background: linear-gradient(180deg, rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.06), rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.02));
+            border: 1px solid rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.12);
+            box-shadow: 0 18px 32px rgba(var(--dark-r), var(--dark-g), var(--dark-b), 0.35);
+            transform: translateY(6px);
+            transition: transform .7s ease;
+        }
+
+        .logo-wrap:hover {
+            transform: translateY(0) scale(1.01);
+        }
+
+        .logo {
+            width: 150px;
+            height: 145px;
+            object-fit: contain;
+            display: block;
+            border-radius: 50%;
+            border: 3px solid rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.14);
+            box-shadow: 0 10px 30px rgba(var(--dark-r), var(--dark-g), var(--dark-b), 0.28);
+            background: rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.02);
+            margin: 0 auto;
+        }
+
+        .title {
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+            font-size: 34px;
+            margin: 12px 0 6px;
+            color: rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.98);
+        }
+
+        .slogan {
+            color: rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.95);
+            font-size: 17.5px;
+            max-width: 880px;
+            margin: 0 auto 12px;
+            text-align: center;
+        }
+
+        .links-wrap {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 6px;
+            margin-bottom: 6px;
+        }
+
+        .links-grid {
+            width: min(1200px, 96%);
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 50px;
+        }
+
+        .link-card {
+            background: linear-gradient(180deg, rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.06), rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.02));
+            border-radius: 16px;
+            padding: 18px;
+            text-align: center;
+            border: 1px solid rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.12);
+            box-shadow: 0 12px 30px rgba(var(--dark-r), var(--dark-g), var(--dark-b), 0.28);
+            transition: transform .45s, box-shadow .45s, border-color .45s, background .45s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .link-card .icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .link-card .icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .link-card .label {
+            font-weight: 600;
+            font-size: 18px;
+            color: rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.98);
+        }
+
+        .link-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 28px 60px rgba(var(--dark-r), var(--dark-g), var(--dark-b), 0.44);
+            border-color: rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.28);
+            background: linear-gradient(180deg, rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.12), rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.04));
+        }
+
+        .link-card:hover .icon {
+            transform: scale(1.1);
+        }
+
+        .link-card::before {
+            content: "";
+            position: absolute;
+            inset: -40% -20%;
+            transform: translateX(-120%) rotate(18deg);
+            background: linear-gradient(90deg, rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0) 0%, rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.12) 45%, rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.28) 55%, rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0) 100%);
+            transition: transform .9s;
+            z-index: 0;
+        }
+
+        .link-card:hover::before {
+            transform: translateX(40%) rotate(18deg);
+        }
+
+        .link-card>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (max-width:1100px) {
+            .links-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width:860px) {
+            .links-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .title {
+                font-size: 30px
+            }
+        }
+
+        @media (max-width:640px) {
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .logo {
+                width: 120px;
+                height: 115px
+            }
+
+            .title {
+                font-size: 24px
+            }
+
+            .slogan {
+                font-size: 14px
+            }
+        }
+
+        @media (max-width:380px) {
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 18px 10px 28px;
+            text-align: center;
+            font-size: 14px;
+            color: rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.86);
+            border-top: 1px solid rgba(var(--cream-r), var(--cream-g), var(--cream-b), 0.08);
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(var(--dark-r), var(--dark-g), var(--dark-b), 0.06));
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <header>
+            <div class="logo-wrap">
+                <img class="logo" src="images\Mira-Gems_Logo.jpg" alt="Mira Gems Logo">
+            </div>
+            <div class="title">Mira Gems | Lab-Grown Diamonds</div>
+            <div class="slogan">We grow, cut & craft. From loose diamonds to jewelry — all in one
+                place.<span>💎✨</span></div>
+        </header>
+
+        <div class="links-wrap" role="navigation">
+            <div class="links-grid">
+                <!-- <a class="link-card" href="https://api.whatsapp.com/send/?phone=919033002188" target="_blank">
+                    <div class="icon">
+                        <img src="https://img.icons8.com/color/96/whatsapp.png" alt="WhatsApp">
+                    </div>
+                    <div class="label">WhatsApp</div>
+                </a> -->
+
+                <a class="link-card" href="https://www.instagram.com/miragems.labgrowndiamonds/" target="_blank">
+                    <div class="icon">
+                        <img src="https://img.icons8.com/color/96/instagram-new.png" alt="Instagram">
+                    </div>
+                    <div class="label">Instagram</div>
+                </a>
+
+                <a class="link-card" href="https://in.pinterest.com/miragems_lgd_official/" target="_blank">
+                    <div class="icon">
+                        <img src="https://img.icons8.com/color/96/pinterest.png" alt="Pinterest">
+                    </div>
+                    <div class="label">Pinterest</div>
+                </a>
+
+                <a class="link-card" href="https://in.linkedin.com/company/miragems" target="_blank">
+                    <div class="icon">
+                        <img src="https://img.icons8.com/color/96/linkedin.png" alt="LinkedIn">
+                    </div>
+                    <div class="label">LinkedIn</div>
+                </a>
+
+                <a class="link-card" href="https://play.google.com/store/apps/details?id=com.futuretech.miraGems&hl=en_IN"
+                    target="_blank">
+                    <div class="icon">
+                        <img src="https://img.icons8.com/color/96/google-play.png" alt="Play Store">
+                    </div>
+                    <div class="label">Mira Gems - Buy Diamond</div>
+                </a>
+
+                <a class="link-card" href="https://apps.apple.com/in/app/mira-gems-buy-diamond/id6450417224"
+                    target="_blank">
+                    <div class="icon">
+                        <img src="https://img.icons8.com/color/100/apple-app-store.png" alt="App Store">
+                    </div>
+                    <div class="label">Mira Gems - Buy Diamond</div>
+                </a>
+
+                <a class="link-card" href="https://www.miragems.com" target="_blank">
+                    <div class="icon">
+                        <img src="https://img.icons8.com/color/96/domain.png" alt="Website">
+                    </div>
+                    <div class="label">Website</div>
+                </a>
+
+                <a class="link-card" href="https://www.facebook.com/61563518032836/about/?_rdr" target="_blank">
+                    <div class="icon">
+                        <img src="https://img.icons8.com/color/96/facebook.png" alt="Facebook">
+                    </div>
+                    <div class="label">Facebook</div>
+                </a>
+
+                <a class="link-card" href="https://www.google.com/maps/place/Mira+Gems/@21.210988,72.8481549,1182m"
+                    target="_blank">
+                    <div class="icon">
+                        <img src="https://img.icons8.com/color/96/google-maps.png" alt="Location">
+                    </div>
+                    <div class="label">Location</div>
+                </a>
+
+                <a class="link-card" href="https://g.page/r/CbbQbcGd7SOOEAE/review" target="_blank">
+                    <div class="icon">
+                        <img src="https://img.icons8.com/color/96/star--v1.png" alt="Review Us">
+                    </div>
+                    <div class="label">Review Us</div>
+                </a>
+            </div>
+        </div>
+
+        <footer> © 2025 <span>Mira Gems</span> • Crafted with 💎</footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.link-card');
+            cards.forEach((c, i) => {
+                c.style.opacity = 0;
+                c.style.transform = 'translateY(18px)';
+                setTimeout(() => {
+                    c.style.transition = 'transform 650ms, opacity 450ms';
+                    c.style.opacity = 1;
+                    c.style.transform = 'translateY(0)';
+                }, 90 * i + 200);
+            });
+            const logoWrap = document.querySelector('.logo-wrap');
+            let t = 0;
+            function pulse() {
+                t += 0.02;
+                const s = 1 + Math.sin(t) * 0.007;
+                logoWrap.style.transform = `scale(${s})`;
+                requestAnimationFrame(pulse);
+            }
+            requestAnimationFrame(pulse);
+        });
+    </script>
+</body>
+
+</html>
